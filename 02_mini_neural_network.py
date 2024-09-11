@@ -4,8 +4,10 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+
 def identity_function(x):
     return x
+
 
 def init_network():
     network = {}
@@ -27,6 +29,14 @@ def forward(network, x):
     z2 = sigmoid(a2)
     a3 = np.dot(z2, W3) + b3
     y = identity_function(a3)
+    return y
+
+
+def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
     return y
 
 
